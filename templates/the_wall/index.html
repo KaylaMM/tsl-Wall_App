@@ -13,10 +13,28 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
-      <h3> Welcome to my app</h3>  
-      <button type="submit"> SignUp </button>
-      <button type="submit"> LogIn </button>
-      <button type="submit"> LogOut </button>
+        {% for messagfe in messages %}
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+            <strong> Message:</strong> {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"> &times; </span>
+            </button>
+        </div>
+        {% endfor %}
+
+      <h3> Welcome to The Wall <h3> 
+
+
+        {% if user.is_authenticated%}
+        <h3> Hello {{fistname}} </h3>  
+        <h4> you've successfully logged in</h4>
+        <button type="submit"> LogOut </button>
+
+        {% else %}
+        <button type="submit"> SignUp </button>
+        <button type="submit"> LogIn </button>
+        {% endif %}
+
 
         
         <script src="" async defer></script>
