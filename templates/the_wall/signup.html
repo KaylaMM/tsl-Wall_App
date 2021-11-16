@@ -4,17 +4,76 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <h3> Sign Up </h3>
-        
-        <script src="" async defer></script>
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <h3>Sign Up</h3>
+
+    <form action="/signup " method="post">
+      {% csrf_token %}
+      <label for="">Username</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        placeholder="Create a username"
+        required
+      />
+      <br />
+      <label for="">First Name</label>
+      <input
+        type="text"
+        id="first-name"
+        name="first-name"
+        placeholder="First Name"
+        required
+      />
+      <br />
+      <label for="">Last Name</label>
+      <input
+        type="text"
+        id="last-name"
+        name="last-name"
+        placeholder="Last Name"
+        required
+      />
+      <br />
+      <label for="">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Email"
+        required
+      />
+      <br />
+      <label for="">Password</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        placeholder="Password"
+        required
+      />
+      <br />
+      <label for="">Confirm Password</label>
+      <input
+        type="password"
+        id="confirm-pass"
+        name="confirm-pass"
+        placeholder="Confirm your  Password"
+        required
+      />
+      <br />
+      <button type="submit">Sign Up</button>
+    </form>
+    <br />
+    <script src="" async defer></script>
+  </body>
 </html>
