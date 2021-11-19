@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login,  logout
 
 
 # Create your views here.
@@ -13,31 +13,31 @@ def signup(request):
     
     if request.method == "POST":
         username = request.POST['username']
-        firstname = request.POST['first-name']
-        lastname = request.POST['last-name']
+        firstname = request.POST['firstname']
+        lastname = request.POST['lastname']
         email = request.POST['email']
-        pass1 = request.POST['password']
-        pass2 = request.POST['confirm-pass']
+        pass1 = request.POST['pass1']
+        pass2 = request.POST['pass2']
 
-        myuser = User.objects.create_user(username, email, pass1)
-        myuser.first_name = firstname 
-        myuser.last_name = lastname 
+        myuser = User.objects.create_user (username, email, pass1)
+        myuser.firstname = firstname 
+        myuser.lastname = lastname 
 
         myuser.save()
 
         messages.success(request, "Your account has been created!")
 
-        return redirect('login')
+        return redirect('signin')
 
     return render(request, "the_wall/signup.html")
 
-def login(request):
+def signin(request):
 
     if request.method == "POST":
         username = request.POST['username']
-        pass1 = request.POST['password']
+        pass1 = request.POST['pass1']
 
-        user = authenticate(username=username, passowrd=pass1) 
+        user = authenticate(username=username, pass1=pass1) 
 
         if user is not None:
             login(request, user)
@@ -48,7 +48,9 @@ def login(request):
             messages.error(request, "Uh oh! Your username/password is incorrect.")
             return redirect('home')
 
-    return render(request, "the_wall/login.html")
+    return render(request, "the_wall/signin.html")
 
-def logout(request):
-    pass
+def signout(request):
+    logout(request)
+    messages.success(request, "Sign Out success")
+    return redirect('home') 

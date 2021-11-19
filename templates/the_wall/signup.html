@@ -16,6 +16,7 @@
     <h3>Sign Up</h3>
 
     <form action="/signup " method="post">
+      
       {% csrf_token %}
       <label for="">Username</label>
       <input
@@ -29,8 +30,8 @@
       <label for="">First Name</label>
       <input
         type="text"
-        id="first-name"
-        name="first-name"
+        id="firstname"
+        name="firstname"
         placeholder="First Name"
         required
       />
@@ -38,8 +39,8 @@
       <label for="">Last Name</label>
       <input
         type="text"
-        id="last-name"
-        name="last-name"
+        id="lastname"
+        name="lastname"
         placeholder="Last Name"
         required
       />
@@ -56,8 +57,8 @@
       <label for="">Password</label>
       <input
         type="password"
-        id="password"
-        name="password"
+        id="pass1"
+        name="pass1"
         placeholder="Password"
         required
       />
@@ -65,8 +66,8 @@
       <label for="">Confirm Password</label>
       <input
         type="password"
-        id="confirm-pass"
-        name="confirm-pass"
+        id="pass2"
+        name="pass2"
         placeholder="Confirm your  Password"
         required
       />

@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+
 <html>
     <head>
         <meta charset="utf-8">
@@ -13,7 +10,7 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
-        {% for messagfe in messages %}
+        {% for message in messages %}
         <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
             <strong> Message:</strong> {{ message }}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -25,16 +22,16 @@
       <h3> Welcome to The Wall <h3> 
 
 
-        {% if user.is_authenticated%}
-        <h3> Hello {{fistname}} </h3>  
+        {% if user.is_authenticated %}
+        <h3> Hello {{firstname}} </h3>   
         <h4> you've successfully logged in</h4>
-        <button type="submit"> LogOut </button>
+        <button type="submit"><a href="/signout"> Sign Out </a> </button>
 
         {% else %}
-        <button type="submit"> SignUp </button>
-        <button type="submit"> LogIn </button>
-        {% endif %}
-
+        <button type="submit"> <a href="/signup">SignUp</a> </button>
+        <button type="submit"> <a href="/signin ">Sign  In</a>  </button>
+        {% endif %} 
+ 
 
         
         <script src="" async defer></script>
