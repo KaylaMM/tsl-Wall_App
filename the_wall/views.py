@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.core.mail import EmailMessage, send_mail
@@ -10,12 +10,22 @@ from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.utils.encoding import force_bytes, force_text 
 from django.contrib.auth import authenticate, login,  logout
 from . tokens import generate_token
+
+from .models import Tweet
 # from django.core.mail import send_mail
 
 # Create your views here.
-def home(request): 
+def home(request, *args, **kwargs): 
+    return HttpResponse("<h1> Hello World <h1>")
     return render(request, "the_wall/index.html")
 
+def tweet_detail_view(request, tweet_id, *args, **kwargs): 
+    try:
+        obj = Tweet.objects.get(id=tweet_id)
+    except:
+        raise Http404
+    return HttpResponse("<h1> Hello {tweet_id} - {obj.content} <h1>")
+ 
 def signup(request):
     
     if request.method == "POST":
